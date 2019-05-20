@@ -2,8 +2,10 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
-// To have git 'forget' about this file because of the api key
-// in command: git rm --cached .\src\Firebase.js
+/*
+  Create a Realtime Database in Google Firebase: https://console.firebase.google.com
+  In Project settings, add to Web App and get the below config information.
+*/
 const config = {
   apiKey: "abcdefg",
   authDomain: "react-spa-abcdefg.firebaseapp.com",

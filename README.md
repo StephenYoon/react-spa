@@ -1,4 +1,4 @@
-# Single Page Application build with React
+# Single Page Application built with React
 
 ## Prerequisites:
 
@@ -18,7 +18,8 @@ You will also see any lint errors in the console.
 
 ### Notes
 
-1. This project was created with `npx create-react-app` [Create React App](https://github.com/facebook/create-react-app).
+1. This project was created by following a Lynda.com course on `React: SPAs`
+1. The application was created with `npx create-react-app` [Create React App](https://github.com/facebook/create-react-app).
 1. Installed [React Icons](https://www.npmjs.com/package/react-icons)
 1. Installed [Reach Router](https://reach.tech/router)
-1. Created a Realtime Database in Google Firebase: https://console.firebase.google.com
+1. Created a Realtime Database in [Google Firebase](https://console.firebase.google.com)

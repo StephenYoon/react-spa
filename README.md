@@ -3,6 +3,9 @@
 ## Prerequisites:
 
 1. node.js
+1. Firebase project
+    - Enable Authentication (Email & Password)
+    - Create a Real-time database
 
 ## Running Locally
 

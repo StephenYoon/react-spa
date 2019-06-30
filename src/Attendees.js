@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import firebase from './Firebase';
 import AttendeesList from './AttendeesList';
+import { FaUndo } from 'react-icons/fa';
 
 class Attendees extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      searchQuery: '',
       displayAttendees: []
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.resetQuery = this.resetQuery.bind(this);
   }
 
   componentDidMount() {
@@ -36,7 +41,28 @@ class Attendees extends Component {
     });
   }
 
+  handleChange(e) {
+    const itemName = e.target.name;
+    const itemValue = e.target.value;
+
+    this.setState({ [itemName]: itemValue });
+  }
+
+  resetQuery() {
+    this.setState({
+      searchQuery: ''
+    });
+  }
+
   render() {
+    const dataFilter = item =>
+      item.attendeeName
+        .toLowerCase()
+        .match(this.state.searchQuery.toLowerCase()) && true;
+    const filteredAttendees = this.state.displayAttendees.filter(
+      dataFilter
+    );
+
     return (
       <div className="container mt-4">
         <div className="row justify-content-center">
@@ -44,13 +70,37 @@ class Attendees extends Component {
             <h1 className="font-weight-light text-center">
               Attendees
             </h1>
+
+            <div className="card bg-light mb-4">
+              <div className="card-body text-center">
+                <div className="input-group input-group-lg">
+                  <input
+                    type="text"
+                    name="searchQuery"
+                    value={this.state.searchQuery}
+                    placeholder="Search Attendees"
+                    className="form-control"
+                    onChange={this.handleChange}
+                  />
+                  <div className="input-group-append">
+                    <button
+                      className="btn btn-sm btn-outline-info "
+                      title="Reset Search"
+                      onClick={() => this.resetQuery()}
+                    >
+                      <FaUndo />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <AttendeesList
           userID={this.props.userID}
           meetingID={this.props.meetingID}
           adminUser={this.props.adminUser}
-          attendees={this.state.displayAttendees}
+          attendees={filteredAttendees}
         />
       </div>
     );
